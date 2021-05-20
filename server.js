@@ -97,9 +97,42 @@ const RootQueryType = new GraphQLObjectType({
         }
     })
 })
+// Manipulate GraphQL Data with Mutations
+const RootMutationType = new GraphQLObjectType({
+    name: 'Mutation',
+    description: 'Root Mutation',
+    fields: () => ({
+        addGame:{
+            type: GameType,
+            description: 'Add a game',
+            args:{
+                name: {type: GraphQLNonNull(GraphQLString)},
+                studioID: {type: GraphQLNonNull(GraphQLInt)}
+            },
+            resolve: (parent, args) => {
+                const game = {id: games.length +1, name: args.name, studioID: args.studioID} //create game, id not to important as would be created in db
+                games.push(game) //push game to games list
+                return game
+            }
+        },
+        addStudio:{
+            type: StudioType,
+            description: 'Add a game studio',
+            args:{
+                name: {type: GraphQLNonNull(GraphQLString)}
+            },
+            resolve: (parent, args) => {
+                const studio = {id: studios.length +1, name: args.name} //create game, id not to important as would be created in db
+                studios.push(studio) //push game to games list
+                return studio
+            }
+        }
+    })
+})
 
 const schema = new GraphQLSchema({
-    query: RootQueryType
+    query: RootQueryType,
+    mutation: RootMutationType
 })
 
 
