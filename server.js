@@ -65,11 +65,31 @@ const RootQueryType = new GraphQLObjectType({
     name: 'Query',
     description: 'Root Query',
     fields: () => ({
+        // Query a Single game
+        game:{
+          type: GameType,
+          description: 'A single game',
+          args:{
+              id: {type: GraphQLInt}
+          },
+          resolve: (parent, args) => games.find(game => game.id === args.id)
+        },
+        // Query a List of Games
         games:{
             type: new GraphQLList(GameType),
             description: 'List of All Games',
             resolve: () => games
         },
+        // Query a Single studio
+        studio:{
+            type: StudioType,
+            description: 'A single studio',
+            args:{
+                id: {type: GraphQLInt}
+            },
+            resolve: (parent, args) => studios.find(studio => studio.id === args.id)
+        },
+        // Query a List of Studios
         studios:{
             type: new GraphQLList(StudioType),
             description: 'List of All Studios',
