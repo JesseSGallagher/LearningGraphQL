@@ -2,7 +2,6 @@
 
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
-// formly- const expressGraphQL =  require('express-graphql')
 
 const {GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLList, GraphQLInt, GraphQLNonNull} = require('graphql');
 
@@ -31,11 +30,33 @@ const games = [
 
 const GameType = new GraphQLObjectType({
     name: 'Game',
-    description: 'A video game published a game development studio',
+    description: 'This represents a video game published by a game development studio',
     fields: () => ({
         id: {type: new GraphQLNonNull(GraphQLInt)},
         name: {type: new GraphQLNonNull(GraphQLString)},
         studioID: {type: new GraphQLNonNull(GraphQLInt)},
+        //how to get the studio from the game
+        studio: {
+            type: StudioType,
+            resolve: (game) =>{ //custom resolve with parent game object, passes the data to match the fields
+                return studios.find(studio => studio.id === game.studioID) // find studio with id in game 
+            }
+        }
+    })
+})
+
+const StudioType = new GraphQLObjectType({
+    name: 'Studio',
+    description: 'This represents a studio that publish games',
+    fields: () => ({
+        id: {type: new GraphQLNonNull(GraphQLInt)},
+        name: {type: new GraphQLNonNull(GraphQLString)},
+        games:{
+            type: new GraphQLList(GameType),
+            resolve: (studio) =>  {
+                return games.filter(game => game.studioID === studio.id)
+            }
+        }
     })
 })
 
@@ -48,6 +69,11 @@ const RootQueryType = new GraphQLObjectType({
             type: new GraphQLList(GameType),
             description: 'List of All Games',
             resolve: () => games
+        },
+        studios:{
+            type: new GraphQLList(StudioType),
+            description: 'List of All Studios',
+            resolve: () => studios
         }
     })
 })
