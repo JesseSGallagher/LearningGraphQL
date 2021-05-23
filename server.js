@@ -102,6 +102,7 @@ const RootMutationType = new GraphQLObjectType({
     name: 'Mutation',
     description: 'Root Mutation',
     fields: () => ({
+        // Mutation to add a single game
         addGame:{
             type: GameType,
             description: 'Add a game to the list.',
@@ -115,6 +116,7 @@ const RootMutationType = new GraphQLObjectType({
                 return game
             }
         },
+        // Mutation to remove a single game
         removeGame: {
             type: GameType,
             description: 'Remove a game from the list.',
@@ -128,6 +130,7 @@ const RootMutationType = new GraphQLObjectType({
                 return game
             }
         },
+        // Mutation to add a single studio
         addStudio:{
             type: StudioType,
             description: 'Add a game studio to the list.',
@@ -140,6 +143,7 @@ const RootMutationType = new GraphQLObjectType({
                 return studio
             }
         },
+        // Mutation to remove a single studio
         removeStudio:{
             type: StudioType,
             description: 'Remove a game studio to the list.',
