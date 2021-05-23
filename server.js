@@ -68,7 +68,7 @@ const RootQueryType = new GraphQLObjectType({
         // Query a Single game
         game:{
           type: GameType,
-          description: 'A single game',
+          description: 'Search a single game.',
           args:{
               id: {type: GraphQLInt}
           },
@@ -77,13 +77,13 @@ const RootQueryType = new GraphQLObjectType({
         // Query a List of Games
         games:{
             type: new GraphQLList(GameType),
-            description: 'List of All Games',
+            description: 'List of all games.',
             resolve: () => games
         },
         // Query a Single studio
         studio:{
             type: StudioType,
-            description: 'A single studio',
+            description: 'Search a single game studio.',
             args:{
                 id: {type: GraphQLInt}
             },
@@ -92,7 +92,7 @@ const RootQueryType = new GraphQLObjectType({
         // Query a List of Studios
         studios:{
             type: new GraphQLList(StudioType),
-            description: 'List of All Studios',
+            description: 'List of all game studios.',
             resolve: () => studios
         }
     })
@@ -104,26 +104,51 @@ const RootMutationType = new GraphQLObjectType({
     fields: () => ({
         addGame:{
             type: GameType,
-            description: 'Add a game',
+            description: 'Add a game to the list.',
             args:{
                 name: {type: GraphQLNonNull(GraphQLString)},
                 studioID: {type: GraphQLNonNull(GraphQLInt)}
             },
             resolve: (parent, args) => {
                 const game = {id: games.length +1, name: args.name, studioID: args.studioID} //create game, id not to important as would be created in db
-                games.push(game) //push game to games list
+                games.push(game) //push game to games
+                return game
+            }
+        },
+        removeGame: {
+            type: GameType,
+            description: 'Remove a game from the list.',
+            args:{
+                name: {type: GraphQLNonNull(GraphQLString)},
+                studioID: {type:  GraphQLNonNull(GraphQLInt)}
+            },
+            resolve: (parent, args) => {
+                const game = {id: games.length +1, name: args.name, studioID: args.studioID} 
+                games.pop(game) 
                 return game
             }
         },
         addStudio:{
             type: StudioType,
-            description: 'Add a game studio',
+            description: 'Add a game studio to the list.',
             args:{
                 name: {type: GraphQLNonNull(GraphQLString)}
             },
             resolve: (parent, args) => {
-                const studio = {id: studios.length +1, name: args.name} //create game, id not to important as would be created in db
-                studios.push(studio) //push game to games list
+                const studio = {id: studios.length +1, name: args.name} 
+                studios.push(studio)
+                return studio
+            }
+        },
+        removeStudio:{
+            type: StudioType,
+            description: 'Remove a game studio to the list.',
+            args:{
+                name: {type: GraphQLNonNull(GraphQLString)}
+            },
+            resolve: (parent, args) => {
+                const studio = {id: studios.length +1, name: args.name} 
+                studios.pop(studio)
                 return studio
             }
         }
