@@ -37,7 +37,7 @@ This would get you a list of all the games, displaying their id, name, and studi
 ```
 #### Get a Single Game
 ---
-This will get you a single game by searching by its id.
+This will get you a single game by searching its id.
 
 ```
 {
