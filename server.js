@@ -102,7 +102,7 @@ const RootMutationType = new GraphQLObjectType({
     name: 'Mutation',
     description: 'Root Mutation',
     fields: () => ({
-        // Mutation to add a single game
+        // Mutation - add a single game
         addGame:{
             type: GameType,
             description: 'Add a game to the list.',
@@ -116,7 +116,7 @@ const RootMutationType = new GraphQLObjectType({
                 return game
             }
         },
-        // Mutation to remove a single game
+        // Mutation - remove a single game
         removeGame: {
             type: GameType,
             description: 'Remove a game from the list.',
@@ -130,7 +130,20 @@ const RootMutationType = new GraphQLObjectType({
                 return game
             }
         },
-        // Mutation to add a single studio
+        // Mutation - update a single game name
+        updateGameName: {
+            type: GameType,
+            description: 'Update a game name from in the list.',
+            args:{
+                id: {type: GraphQLNonNull(GraphQLInt)},
+                name: {type: GraphQLNonNull(GraphQLString)},
+            },
+            resolve: (parent, args) => {
+                games[args.id - 1].name = args.name
+                return games[args.id - 1]
+            }
+        },
+        // Mutation - add a single game studio
         addStudio:{
             type: StudioType,
             description: 'Add a game studio to the list.',
@@ -143,10 +156,10 @@ const RootMutationType = new GraphQLObjectType({
                 return studio
             }
         },
-        // Mutation to remove a single studio
+        // Mutation - remove a single game studio
         removeStudio:{
             type: StudioType,
-            description: 'Remove a game studio to the list.',
+            description: 'Remove a game studio from the list.',
             args:{
                 name: {type: GraphQLNonNull(GraphQLString)}
             },
@@ -154,6 +167,19 @@ const RootMutationType = new GraphQLObjectType({
                 const studio = {id: studios.length +1, name: args.name} 
                 studios.pop(studio)
                 return studio
+            }
+        },
+        // Mutation - update an exsisting game studios name
+        updateStudioName: {
+            type: StudioType,
+            description: 'Update a game studios name from in the list.',
+            args:{
+                id: {type: GraphQLNonNull(GraphQLInt)},
+                name: {type: GraphQLNonNull(GraphQLString)},
+            },
+            resolve: (parent, args) => {
+                studios[args.id - 1].name = args.name
+                return studios[args.id - 1]
             }
         }
     })
