@@ -158,4 +158,4 @@ mutation {
 This will remove the recently updated studio "New Studio Name"
 
 ***
-#### Note : This is not a persitent database. It will note save the results to the hardcoded data, and will be lost if the page is refreshed.
+#### Note : This is not a persitent database. It will not save the results to the hardcoded data, and will be lost if the page is refreshed.
