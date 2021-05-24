@@ -12,11 +12,11 @@ You can **Query** for:
 
 The following **Mutations** can be preformed:
 - Add Game
-- Remove Game
 - Update Game's Name
+- Remove Game
 - Add Game Studio
-- Remove Game Studio
 - Update Game Studio's Name
+- Remove Game Studio
 
 
 ## GraphQL Queries
