@@ -25,10 +25,22 @@ The following **Mutations** can be preformed:
 This would get you a list of all the games listed, displaying their id, name, and studioID. (You can add or remove retrieved fields as needed.
 ```
 {
-  games{
+  games {
     id
     name
     studioID
+  }
+}
+```
+
+### Get a Single Game
+This will get you a single game by searching by its id.
+
+```
+{
+  game(id: 1) {
+    id
+    name
   }
 }
 ```
