@@ -1,5 +1,4 @@
 ﻿# LearningGraphQL
- ---
 
 ### Express, Express-GraphQL, GraphQL
 
@@ -83,3 +82,45 @@ This will get you a single game studio by searching by its id.
 }
 ```
 
+## GraphQL Mutations
+
+### Add a Game
+---
+This will allow you to add a game to the stack.
+```
+PLACEHOLDER
+```
+
+### Remove a Game
+---
+This will allow you to remove a game from the stack.
+```
+PLACEHOLDER
+```
+
+### Update a Game's Name
+---
+This will allow you to update an exsisting games name in the stack.
+```
+PLACEHOLDER
+```
+### Add a Game Studio
+---
+This will allow you to add a game to the stack.
+```
+PLACEHOLDER
+```
+
+### Remove a Game Studio
+---
+This will allow you to remove a game from the stack.
+```
+PLACEHOLDER
+```
+
+### Update a Game Studio's Name
+---
+This will allow you to update an exsisting games name in the stack.
+```
+PLACEHOLDER
+```
