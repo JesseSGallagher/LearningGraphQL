@@ -88,21 +88,35 @@ This will get you a single game studio by searching by its id.
 ---
 This will allow you to add a game to the stack.
 ```
-PLACEHOLDER
+mutation {
+  addGame(name: "New Game", studioID: 2) {
+    id
+    name
+  }
+}
 ```
+You can then view this entry by calling a query for all games, or by using the ID displayed when adding the game.
 
 ### Remove a Game
 ---
-This will allow you to remove a game from the stack.
+This will allow you to remove a game from the stack by entering its name, and the studioID it belongs to.
 ```
-PLACEHOLDER
+mutation {
+  removeGame(name: "New Game", studioID: 2) {
+    name
+  }
+}
 ```
 
 ### Update a Game's Name
 ---
-This will allow you to update an exsisting games name in the stack.
+This will allow you to update an exsisting games name in the stack, you need to include the ID you wish to modify and the new name.
 ```
-PLACEHOLDER
+mutation {
+  updateGameName(id: 9, name: "New Game Name") {
+    name
+  }
+}
 ```
 ### Add a Game Studio
 ---
