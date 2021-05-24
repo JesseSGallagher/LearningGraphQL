@@ -97,6 +97,17 @@ mutation {
 ```
 You can then view this entry by calling a query for all games, or by using the ID displayed when adding the game.
 
+### Update a Game's Name
+---
+This will allow you to update an exsisting games name in the stack, you need to include the ID you wish to modify and the new name.
+```
+mutation {
+  updateGameName(id: 9, name: "New Game Name") {
+    name
+  }
+}
+```
+
 ### Remove a Game
 ---
 This will allow you to remove a game from the stack by entering its name, and the studioID it belongs to.
@@ -108,33 +119,43 @@ mutation {
 }
 ```
 
-### Update a Game's Name
----
-This will allow you to update an exsisting games name in the stack, you need to include the ID you wish to modify and the new name.
-```
-mutation {
-  updateGameName(id: 9, name: "New Game Name") {
-    name
-  }
-}
-```
 ### Add a Game Studio
 ---
 This will allow you to add a game to the stack.
 ```
-PLACEHOLDER
+mutation {
+  addStudio(name: "New Studio") {
+    id
+    name
+  }
+}
 ```
-
-### Remove a Game Studio
----
-This will allow you to remove a game from the stack.
-```
-PLACEHOLDER
-```
+For adding a new game studio, only the name is needed.
 
 ### Update a Game Studio's Name
 ---
-This will allow you to update an exsisting games name in the stack.
+This will allow you to update an exsisting game studios name in the stack.
 ```
-PLACEHOLDER
+mutation {
+  updateStudioName(id: 5, name: "New Studio Name") {
+    id
+    name
+  }
+}
 ```
+With this we change the created studio with the id 5 "New Studio" to "New Studio Name".
+
+### Remove a Game Studio
+---
+This will allow you to remove a game studio from the stack.
+```
+mutation {
+  removeStudio(name: "New Studio Name") {
+    name
+  }
+}
+```
+This will remove the recently updated studio "New Studio Name"
+
+***
+#### Note : This is not a persitent database. It will note save the results to the hardcoded data, and will be lost if the page is refreshed.
