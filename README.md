@@ -25,7 +25,7 @@ The following **Mutations** can be preformed:
 
 #### Get All Games
 ---
-This would get you a list of all the games listed, displaying their id, name, and studioID. (You can add or remove retrieved fields as needed)
+This would get you a list of all the games, displaying their id, name, and studioID. (You can add or remove retrieved fields as needed)
 ```
 {
   games {
