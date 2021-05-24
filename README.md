@@ -19,11 +19,11 @@ The following **Mutations** can be preformed:
 - Remove Game Studio
 
 
-## GraphQL Queries
+### GraphQL Queries
 
 
 
-### Get All Games
+#### Get All Games
 ---
 This would get you a list of all the games listed, displaying their id, name, and studioID. (You can add or remove retrieved fields as needed)
 ```
@@ -35,7 +35,7 @@ This would get you a list of all the games listed, displaying their id, name, an
   }
 }
 ```
-### Get a Single Game
+#### Get a Single Game
 ---
 This will get you a single game by searching by its id.
 
@@ -47,7 +47,7 @@ This will get you a single game by searching by its id.
   }
 }
 ```
-### Get All Game Studios
+#### Get All Game Studios
 ---
 This would get you a list of all the game studios listed, displaying their id, name.
 ```
@@ -72,7 +72,7 @@ We can go a step further displaying the games a studio has published utilizing g
 
 ```
 
-### Get a Single Studio
+#### Get a Single Studio
 ---
 This will get you a single game studio by searching by its id.
 
@@ -84,11 +84,11 @@ This will get you a single game studio by searching by its id.
 }
 ```
 
-## GraphQL Mutations
+### GraphQL Mutations
 
 
 
-### Add a Game
+#### Add a Game
 ---
 This will allow you to add a game to the stack.
 ```
@@ -101,7 +101,7 @@ mutation {
 ```
 You can then view this entry by calling a query for all games, or by using the ID displayed when adding the game.
 
-### Update a Game's Name
+#### Update a Game's Name
 ---
 This will allow you to update an exsisting games name in the stack, you need to include the ID you wish to modify and the new name.
 ```
@@ -112,7 +112,7 @@ mutation {
 }
 ```
 
-### Remove a Game
+#### Remove a Game
 ---
 This will allow you to remove a game from the stack by entering its name, and the studioID it belongs to.
 ```
@@ -123,7 +123,7 @@ mutation {
 }
 ```
 
-### Add a Game Studio
+#### Add a Game Studio
 ---
 This will allow you to add a game to the stack.
 ```
@@ -136,7 +136,7 @@ mutation {
 ```
 For adding a new game studio, only the name is needed.
 
-### Update a Game Studio's Name
+#### Update a Game Studio's Name
 ---
 This will allow you to update an exsisting game studios name in the stack.
 ```
@@ -149,7 +149,7 @@ mutation {
 ```
 With this we change the created studio with the id 5 "New Studio" to "New Studio Name".
 
-### Remove a Game Studio
+#### Remove a Game Studio
 ---
 This will allow you to remove a game studio from the stack.
 ```
@@ -162,4 +162,4 @@ mutation {
 This will remove the recently updated studio "New Studio Name"
 
 ***
-#### Note : This is not a persitent database. It will not save the results to the hardcoded data, and will be lost if the page is refreshed.
+##### Note : This is not a persitent database. It will not save the results to the hardcoded data, and will be lost if the page is refreshed.
